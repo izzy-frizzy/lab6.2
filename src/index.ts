@@ -1,6 +1,8 @@
 import { fetchProductCatalog } from "./apiSimulator.js";
 import { fetchProductReviews } from "./apiSimulator.js";
 import { fetchSalesReport } from "./apiSimulator.js";
+import { DataError } from "./apiSimulator.js";
+import { NetworkError } from "./apiSimulator.js";
 
 function processData() {
   fetchProductCatalog()
@@ -19,11 +21,15 @@ function processData() {
       return fetchSalesReport();
     })
     .then((report) => {
-        console.log("Sales report");
+      console.log("Sales report");
       console.log(report);
     })
     .catch((error) => {
-      console.error(error);
+      if (error instanceof NetworkError) {
+        console.error("Network error:", error.message);
+      } else if(error instanceof DataError) {
+        console.error("Data error:", error.message);
+      } 
     })
     .finally(() => {
       console.log("Finished fetching product information.");
