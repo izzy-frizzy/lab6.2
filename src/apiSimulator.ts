@@ -6,7 +6,7 @@ export const fetchProductCatalog = (): Promise<
       if (Math.random() < 0.8) {
         resolve([
           { id: 1, name: "Laptop", price: 1200 },
-          { id: 2, name: "Headphones", price: 200 },
+          { id: 2, name: "Headphones", price: 200 }
         ]);
       } else {
         reject(new NetworkError("Failed to fetch product catalog"));
@@ -23,10 +23,11 @@ interface Product {
 export const fetchProductReviews = (productId: number): Promise<Product[]> => {
   return new Promise((resolve, reject) => {
     setTimeout(() => {
-      //let product: Product[] = [{ productId: productId,  review:"amazing product 5 stars"}];
+      //let product: Product[] = [{ productId: productId, review:"amazing product 5 stars"}];
       if (Math.random() < 0.8) {
         resolve([
           { productId: productId, review: "amazing product 5 stars" },
+          //{ productId: 2, review: "terrible product it came broken" }
         ]);
       } else {
         reject(

@@ -21,7 +21,7 @@ function processData() {
       return fetchSalesReport();
     })
     .then((report) => {
-      console.log("Sales report");
+      console.log("Sales report:");
       console.log(report);
     })
     .catch((error) => {
