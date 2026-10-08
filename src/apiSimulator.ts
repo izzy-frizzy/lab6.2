@@ -17,14 +17,14 @@ interface Product{
     productId: number;
 }
 
-export const fetchProductReviews = ():Promise<Product[]> => {
+export const fetchProductReviews = (productId:number):Promise<Product[]> => {
     return new Promise((resolve, reject) =>{
         setTimeout(()=>{
-            let product:Product[] = [{productId:123},{productId:456},{productId:789}]
+            let product:Product[] = [{productId:productId}]
             if(Math.random() < 0.8){
                 resolve(product)
             }else{
-                reject(`Failed to fetch reviews for product ID`)
+                reject(`Failed to fetch reviews for product ID ${productId}`)
             }
 
         }, 1500)
@@ -39,13 +39,13 @@ export const fetchSalesReport = ():Promise<{totalSales:number, unitesSold:number
             {totalSales: 2, unitesSold:5, averagePrice:3}
         ]);
         } else {
-        reject("Failed to fetch product catalog");
+        reject("Failed to fetch sales report");
         }
     }, 1000);
     })
 
 }
 
-fetchProductReviews().then((review) =>{
-    console.log(review);
-}).catch((error)=>{console.error(error)})
+// fetchProductReviews().then((review) =>{
+//     console.log(review);
+// }).catch((error)=>{console.error(error)})
