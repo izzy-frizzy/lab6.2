@@ -25,10 +25,22 @@ export const fetchProductReviews = (productId: number): Promise<Product[]> => {
     setTimeout(() => {
       //let product: Product[] = [{ productId: productId, review:"amazing product 5 stars"}];
       if (Math.random() < 0.8) {
-        resolve([
-          { productId: productId, review: "amazing product 5 stars" },
-          //{ productId: 2, review: "terrible product it came broken" }
-        ]);
+        if (productId === 1) {
+                    resolve([
+                        {
+                            productId: 1,
+                            review: "amazing product 5 stars"
+                        }
+                    ]);
+                } 
+                else if (productId === 2) {
+                    resolve([
+                        {
+                            productId: 2,
+                            review: "terrible product it came broken"
+                        }
+                    ]);
+                }
       } else {
         reject(
           new DataError(`Failed to fetch reviews for product ID ${productId}`),
