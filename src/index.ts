@@ -5,21 +5,21 @@ import { fetchSalesReport } from "./apiSimulator.js";
 function processData() {
   fetchProductCatalog()
     .then((catalog) => {
-    console.log("product catalog:");
+      console.log("product catalog:");
       console.log(catalog);
       return Promise.all(
-                catalog.map((product) => {
-                    return fetchProductReviews(product.id);
-                })
-            );
-
-        })
+        catalog.map((product) => {
+          return fetchProductReviews(product.id);
+        }),
+      );
+    })
     .then((reviews) => {
-        console.log("reviews:")
+      console.log("reviews:");
       console.log(reviews);
       return fetchSalesReport();
     })
     .then((report) => {
+        console.log("Sales report");
       console.log(report);
     })
     .catch((error) => {
