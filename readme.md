@@ -1,6 +1,6 @@
 1.Why is it important to handle errors for each individual API call rather than just at the end of the promise chain?
 
-*it's important because when you have individual errors to specific api calls you see exactly which calls are causing you errors 
+* it's important because when you have individual errors to specific api calls you see exactly which calls are causing you errors 
 
 2.How does using custom error classes improve debugging and error identification?
 
